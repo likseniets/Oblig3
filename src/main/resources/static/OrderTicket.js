@@ -67,71 +67,64 @@ function validateMail(mail, val) { //funker likt som film validering, men bruker
 }
 
 function clearInput() { //Setter input fields til å være tomme etter lagring
-    document.getElementById("Film").value = "";
-    document.getElementById("AntallInput").value = "";
-    document.getElementById("FirstnameInput").value = "";
-    document.getElementById("LastnameInput").value = "";
-    document.getElementById("PhoneInput").value = "";
-    document.getElementById("MailInput").value = "";
+    document.getElementById("movie").value = "";
+    document.getElementById("quantity").value = "";
+    document.getElementById("fname").value = "";
+    document.getElementById("lname").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
 }
 function OrderTicket() {
-    let order = { //Objekt med all data fra inputs
-        film: document.getElementById("Film").value,
-        antall: document.getElementById("AntallInput").value,
-        fornavn: document.getElementById("FirstnameInput").value,
-        etternavn: document.getElementById("LastnameInput").value,
-        telefonnr: document.getElementById("PhoneInput").value,
-        epost: document.getElementById("MailInput").value,
+    let ticketInput = { //Objekt med all data fra inputs
+        movie: document.getElementById("movie").value,
+        quantity: document.getElementById("quantity").value,
+        fname: document.getElementById("fname").value,
+        lname: document.getElementById("lname").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+
     }
 
     let validation = true; //initial validation er satt som true
 
-    validation = validateMovie(order.film, validation); //når den går gjennom validering vil validation bli satt til false hvis den failer.
-    validation = validateNumber(order.antall, validation); //hvis den allerede har failet vil den alltid returnere false.
-    validation = validateFirstname(order.fornavn, validation); //men den vil fortsatt gjøre valideringer for å kunne sende feilmelding
-    validation = validateLastname(order.etternavn, validation);
-    validation = validatePhonenumber(order.telefonnr, validation);
-    validation = validateMail(order.epost, validation);
+    validation = validateMovie(ticketInput.movie, validation); //når den går gjennom validering vil validation bli satt til false hvis den failer.
+    validation = validateNumber(ticketInput.quantity, validation); //hvis den allerede har failet vil den alltid returnere false.
+    validation = validateFirstname(ticketInput.fname, validation); //men den vil fortsatt gjøre valideringer for å kunne sende feilmelding
+    validation = validateLastname(ticketInput.lname, validation);
+    validation = validateMail(ticketInput.email, validation);
+    validation = validatePhonenumber(ticketInput.phone, validation);
 
     if (!validation) {
         return; //hvis valideringen ender med false så vil den bare returnere uten å gjøre noe
     } else {
-        let ticketInput = {
-            movie: order.film,
-            quantity: order.antall,
-            fname: order.fornavn,
-            lname: order.etternavn,
-            email: order.epost,
-            phone: order.telefonnr
-
-        }
         $.post("/save", ticketInput, function(){
             hentAlle();
         });
         function hentAlle() {
             $.get("/getAll", function (data) {
-                displayTicketTable(data)
+                displayTicketTable(data);
+                clearInput();
             })
         }
     }
 }
 
 function displayTicketTable(tickets) { //Etter bestilling har blitt oprettet vil den legge in en tabell
-    let out = "<table><tr>" +
-        "<th style='border: 1px solid #dddddd;'>Movie</th>" +
-        "<th style='border: 1px solid #dddddd;'>Quantity</th>" +
-        "<th style='border: 1px solid #dddddd;'>Firstname</th>" +
-        "<th style='border: 1px solid #dddddd;'>LastName</th>" +
-        "<th style='border: 1px solid #dddddd;'>Email</th>" +
-        "<th style='border: 1px solid #dddddd;'>Phone</th>"
+    let out = "<table class='table table-striped'><tr>" +
+        "<th>Movie</th>" +
+        "<th>Quantity</th>" +
+        "<th>Firstname</th>" +
+        "<th>LastName</th>" +
+        "<th>Email</th>" +
+        "<th>Phone</th>"
     for (let p of tickets) { //Etter head for tabell er laget vil den legge til alle bestillingene i rader under
         out += "<tr>";
-        out += "<td style='border: 1px solid #dddddd;'>" + p.movie + "</td>" + //bruker inline style ettersom styling ikke er brukt ellers så
-            "<td style='border: 1px solid #dddddd;'>" + p.quantity + "</td>" + // unngikk å legge til en css fil kun for dette.
-            "<td style='border: 1px solid #dddddd;'>" + p.fname + "</td>" +
-            "<td style='border: 1px solid #dddddd;'>" + p.lname + "</td>" +
-            "<td style='border: 1px solid #dddddd;'>" + p.email + "</td>" +
-            "<td style='border: 1px solid #dddddd;'>" + p.phone + "</td>";
+        out += "<td>" + p.movie + "</td>" + //bruker inline style ettersom styling ikke er brukt ellers så
+            "<td>" + p.quantity + "</td>" + // unngikk å legge til en css fil kun for dette.
+            "<td>" + p.fname + "</td>" +
+            "<td>" + p.lname + "</td>" +
+            "<td>" + p.email + "</td>" +
+            "<td>" + p.phone + "</td>";
         out += "</tr>";
     }
     document.getElementById("TicketTable").innerHTML = out; //Setter inn out, som er tabellen inn i element med id TicketTable
