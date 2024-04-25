@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kino</title>
-        <script src="OrderTicket.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="OrderTicket.js"></script>
     </head>
     <body>
         <div class="container">
@@ -17,7 +17,7 @@
                     <form class="form">
                         <div class="mb-3">
                             <label for="movie" class="form-label">Movie</label>
-                            <select id="movie" class="form-select">
+                            <select id="movie" class="form-select" aria-label="movie-select">
                                 <option value="">Select an movie</option>
                                 <option value="Svensken Artur">Svensken Artur</option>
                                 <option value="Norsken Eskil">Norsken Eskil</option>
@@ -26,30 +26,30 @@
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" class="form-control" id="quantity">
+                            <input type="number" class="form-control" id="quantity" aria-label="quantity-input">
                             <div id="numberError"></div>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Firstname</label>
-                            <input type="text" class="form-control" id="fname">
+                            <input type="text" class="form-control" id="fname" aria-label="firstname-input">
                             <div id="firstnameError"></div>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Lastname</label>
-                            <input type="text" class="form-control" id="lname">
+                            <input type="text" class="form-control" id="lname" aria-label="lastname-input">
                             <div id="lastnameError"></div>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="email" aria-label="email-input">
                             <div id="mailError"></div>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Phone</label>
-                            <input type="number" class="form-control" id="phone">
+                            <input type="number" class="form-control" id="phone" aria-label="phone-input">
                             <div id="phoneError"></div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="OrderTicket();">Order</button>
+                        <button aria-label="order-btn" type="button" class="btn btn-primary" onclick="OrderTicket();">Order</button>
                     </form>
                 </div>
                 <div class="col-md-8">

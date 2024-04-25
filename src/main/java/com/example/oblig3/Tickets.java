@@ -1,5 +1,6 @@
 package com.example.oblig3;
 public class Tickets {
+    private int id;
     private String movie;
     private int quantity;
     private String fname;
@@ -11,13 +12,20 @@ public class Tickets {
 
     }
 
-    public Tickets(String movie, int numberOfTickets, String fname, String lname, String email, String phone) {
+    public Tickets(int id, String movie, int numberOfTickets, String fname, String lname, String email, String phone) {
+        this.id = id;
         this.movie = movie;
         this.quantity = numberOfTickets;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.phone = phone;
+    }
+
+    public int getId() { return id; }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMovie() {

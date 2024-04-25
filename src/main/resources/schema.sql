@@ -1,6 +1,6 @@
 CREATE TABLE Tickets
 (
-    id              INT AUTO_INCREMENT NOT NULL,
+    id              INTEGER AUTO_INCREMENT NOT NULL,
     movie           varchar(255) NOT NULL,
     quantity INT NOT NULL,
     fname           varchar(255) NOT NULL,

@@ -1,4 +1,6 @@
-
+$(function(){
+    hentAlle();
+});
 
 function validateMovie(movie, val) { //validering for å se om film er valgt
     if (movie === "") { //Sjekker at valgt film ikke er første som har tom string value
@@ -100,32 +102,50 @@ function OrderTicket() {
         $.post("/save", ticketInput, function(){
             hentAlle();
         });
-        function hentAlle() {
-            $.get("/getAll", function (data) {
-                displayTicketTable(data);
-                clearInput();
-            })
-        }
     }
 }
 
+function hentAlle() {
+    $.get("/getAll", function (data) {
+        displayTicketTable(data);
+        clearInput();
+    })
+}
+
 function displayTicketTable(tickets) { //Etter bestilling har blitt oprettet vil den legge in en tabell
+    console.log(tickets)
     let out = "<table class='table table-striped'><tr>" +
         "<th>Movie</th>" +
         "<th>Quantity</th>" +
         "<th>Firstname</th>" +
         "<th>LastName</th>" +
         "<th>Email</th>" +
-        "<th>Phone</th>"
-    for (let p of tickets) { //Etter head for tabell er laget vil den legge til alle bestillingene i rader under
+        "<th>Phone</th>" +
+        "<th>Config</th>"
+    for (let i in tickets) { //Etter head for tabell er laget vil den legge til alle bestillingene i rader under
         out += "<tr>";
-        out += "<td>" + p.movie + "</td>" + //bruker inline style ettersom styling ikke er brukt ellers så
-            "<td>" + p.quantity + "</td>" + // unngikk å legge til en css fil kun for dette.
-            "<td>" + p.fname + "</td>" +
-            "<td>" + p.lname + "</td>" +
-            "<td>" + p.email + "</td>" +
-            "<td>" + p.phone + "</td>";
+        out += "<td>" + tickets[i].movie + "</td>" + //bruker inline style ettersom styling ikke er brukt ellers så
+            "<td>" + tickets[i].quantity + "</td>" + // unngikk å legge til en css fil kun for dette.
+            "<td>" + tickets[i].fname + "</td>" +
+            "<td>" + tickets[i].lname + "</td>" +
+            "<td>" + tickets[i].email + "</td>" +
+            "<td>" + tickets[i].phone + "</td>" +
+            "<td><a aria-label='Edit-btn' style='margin-right: 1rem' class='btn btn-primary' href='editTicket.html?id="+ tickets[i].id +"'>Edit</a>" +
+            "<button aria-label='Delete-btn' type='button' class='btn btn-danger' onclick='deleteTicket("+ tickets[i].id +");'>Delete</button></td>";
         out += "</tr>";
     }
     document.getElementById("TicketTable").innerHTML = out; //Setter inn out, som er tabellen inn i element med id TicketTable
+}
+
+function deleteTicket(id) {
+    const url = "/deleteTicket?id="+id;
+    $.get(url, function() {
+        window.location.href = 'index.html';
+    });
+}
+
+function deleteAllTickets() {
+    $.get( "/deleteAllTickets", function() {
+        window.location.href = 'index.html';
+    });
 }

@@ -1,0 +1,1 @@
+INSERT INTO Tickets (id, movie, quantity, fname, lname, email, phone) VALUES ( 0, 'Svensken Artur', 3, 'Eskil', 'Losvar', 'Eskil@gmail.com', 12345678 );
