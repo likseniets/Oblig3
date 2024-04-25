@@ -30,8 +30,8 @@ public class TicketRepository {
        return aTicket.get(0);
     }
 
-    public void deleteAllTickets(){
-        String sql = "DELETE * FROM Tickets";
+    public void deleteAllTickets() {
+        String sql = "DELETE FROM Tickets";
         db.update(sql);
     }
 
@@ -40,7 +40,7 @@ public class TicketRepository {
         db.update(sql,id);
     }
 
-    public void editATicket(Tickets innTicket){
+    public void editATicket(Tickets innTicket) {
         String sql = "UPDATE Tickets SET movie=?, quantity=?, fname=?, lname=?, email=?, phone=? where id=?";
         db.update(sql, innTicket.getMovie(), innTicket.getQuantity(), innTicket.getFname(), innTicket.getLname(), innTicket.getEmail(), innTicket.getPhone(), innTicket.getId());
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,22 +30,22 @@
                             <div id="numberError"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Firstname</label>
+                            <label for="fname" class="form-label">Firstname</label>
                             <input type="text" class="form-control" id="fname" aria-label="firstname-input">
                             <div id="firstnameError"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Lastname</label>
+                            <label for="lname" class="form-label">Lastname</label>
                             <input type="text" class="form-control" id="lname" aria-label="lastname-input">
                             <div id="lastnameError"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" aria-label="email-input">
                             <div id="mailError"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Phone</label>
+                            <label for="phone" class="form-label">Phone</label>
                             <input type="number" class="form-control" id="phone" aria-label="phone-input">
                             <div id="phoneError"></div>
                         </div>
@@ -55,6 +55,7 @@
                 <div class="col-md-8">
                     <h1>All Tickets</h1>
                     <div id="TicketTable"></div>
+                    <button aria-label="delete-all-btn" type="button" class="btn btn-danger" onclick="deleteAllTickets();">Delete all Tickets</button>
                 </div>
             </div>
         </div>

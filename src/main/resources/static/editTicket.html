@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
     <script src="editTicket.js"></script>
 </head>
     <body>
+    <div class="container">
         <h1>Edit Customer</h1>
         <form class="from">
             <input type="hidden" id="id"/>
@@ -23,30 +24,31 @@
             </div>
             <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" aria-label="quantity-input">
-                <div id="numberError"></div>
-            </div>
-            <div class="mb-3">
-                <label for="fname" class="form-label">Firstname</label>
-                <input type="text" class="form-control" id="fname" aria-label="firstname-input">
-                <div id="firstnameError"></div>
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label">Lastname</label>
-                <input type="text" class="form-control" id="lname" aria-label="lastname-input">
-                <div id="lastnameError"></div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-label="email-input">
-                <div id="mailError"></div>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="number" class="form-control" id="phone" aria-label="phone-input">
-                <div id="phoneError"></div>
-            </div>
-            <button aria-label="edit-btn" type="button" class="btn btn-primary" onclick="editATicket();">Edit</button>
-        </form>
+                    <input type="number" class="form-control" id="quantity" aria-label="quantity-input">
+                    <div id="numberError"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="fname" class="form-label">Firstname</label>
+                    <input type="text" class="form-control" id="fname" aria-label="firstname-input">
+                    <div id="firstnameError"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="lname" class="form-label">Lastname</label>
+                    <input type="text" class="form-control" id="lname" aria-label="lastname-input">
+                    <div id="lastnameError"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" aria-label="email-input">
+                    <div id="mailError"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="number" class="form-control" id="phone" aria-label="phone-input">
+                    <div id="phoneError"></div>
+                </div>
+                <button aria-label="edit-btn" type="button" class="btn btn-primary" onclick="editATicket();">Edit</button>
+            </form>
+        </div>
     </body>
 </html>

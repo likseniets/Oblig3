@@ -113,7 +113,6 @@ function hentAlle() {
 }
 
 function displayTicketTable(tickets) { //Etter bestilling har blitt oprettet vil den legge in en tabell
-    console.log(tickets)
     let out = "<table class='table table-striped'><tr>" +
         "<th>Movie</th>" +
         "<th>Quantity</th>" +
